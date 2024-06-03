@@ -1,0 +1,81 @@
+*{
+    margin: 0%;
+    font-family: arial;
+    border: boderbox;
+}
+.navbar{
+    height: 75px;
+    background-color: #0f1111;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.nav-logo{
+    height: 60px;
+    width: 50px;
+    display: flex;
+}
+
+.logo{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    height: 60px;
+    width: 40px;
+    
+}
+
+.boder{
+    border: 6px solid transparent;
+    border-radius: 4px;
+    width: 90px;
+}
+.boder:hover{
+    border: 6px solid rgb(255, 255, 255);
+}
+.add-first{
+color: #cccccc;
+font-size: 1rem;
+margin-left: 15px;
+}
+.add-second{
+color: #ffffff;
+font-size: 1.2rem;
+margin-left: 3px;
+}
+.add-icon{
+display: flex;
+align-items: center;
+}
+
+.name{
+    display:flex;
+    align-items: flex-start;
+margin-left: 0.2CM;
+width: 6cm;
+}
+.herosection{
+    background-size: cover;
+    height: 1cm;
+    width: 375px;
+display: flex;
+justify-content: center;
+align-items: flex-end;
+}
+.heromsg{
+    background-color:rgb(255, 255, 255);
+color:black ;
+
+align-items: center;
+justify-content:center;
+font-size: 0.85rem;
+width: 414px;
+height: 40px;
+}
+.contact_us{
+    background-color: rgb(187, 123, 123);
+    color: rgb(0, 0, 0);
+}
