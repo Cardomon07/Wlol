@@ -3,236 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V-STAR cards</title>
+    <title>We've Been Hacked</title>
     <style>
-      *{
-    margin: 0%;
-    font-family: arial;
-    border: boderbox;
-}
-.navbar{
-    height: 75px;
-    background-color: #0f1111;
-    color: white;
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-}
-
-.nav-logo{
-    height: 60px;
-    width: 50px;
-    display: flex;
-}
-
-.logo{
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    background-size: cover;
-    height: 60px;
-    width: 40px;
-    
-}
-
-.boder{
-    border: 6px solid transparent;
-    border-radius: 4px;
-    width: 90px;
-}
-.boder:hover{
-    border: 6px solid rgb(141, 118, 56);
-}
-.add-first{
-color: #cccccc;
-font-size: 1rem;
-margin-left: 15px;
-}
-.add-second{
-color: #ffffff;
-font-size: 1.2rem;
-margin-left: 3px;
-}
-.add-icon{
-display: flex;
-align-items: center;
-}
-
-.name{
-    display:flex;
-    align-items: flex-start;
-margin-left: 0.2CM;
-
-width: 6cm;
-}
-.gx-cards{
-background-color: rgb(241, 243, 124);
-color: #ffffff;
-}
-
-.space{
-    background-size: cover;
-    height: 1cm;
-    width: 375px;
-display: flex;
-justify-content: center;
-align-items: flex-end;
-}
-.heromsg{
-    background-color:white;
-color:black ;
-
-align-items: center;
-justify-content:center;
-font-size: 0.85rem;
-width: 414px;
-height: 40px;
-}
-.box{
-    border: .5px solid black;
-    height: 400px;
-    width: 250.72px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-color: black;
-}
-.box1{
-    height: 400px;
-    width: 250.72px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:white ;
-}
-.box2{
-    height: 400px;
-    width: 250.72px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-}
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            color: green;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+            pointer-events: none; /* Disable pointer events on body */
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999; /* Ensure it's on top */
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .code {
+            position: absolute;
+            width: 100%;
+            white-space: pre;
+            line-height: 1.5;
+            animation: scroll 8s linear forwards; /* Increased duration for longer animation */
+            color: #00FF00; /* Green color */
+        }
+        @keyframes scroll {
+            0% {
+                top: 100%;
+            }
+            100% {
+                top: -500%; /* Adjusted to accommodate more code */
+            }
+        }
+        .message {
+            position: absolute;
+            font-size: 3rem;
+            text-align: center;
+            width: 100%;
+            color: #FF0000; /* Red color */
+            opacity: 0;
+            animation: appear 1s linear forwards 7.5s; /* Adjusted timing for longer animation */
+        }
+        @keyframes appear {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .redirect-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            opacity: 0;
+            pointer-events: auto; /* Re-enable pointer events for the button */
+        }
+        .redirect-button button {
+            padding: 60px 20px;
+            font-size: 1.2rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .redirect-button button:hover {
+            background-color: #45a049;
+        }
+        .blast {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,69,0,1) 0%, rgba(255,140,0,0.7) 40%, rgba(255,255,255,0.1) 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: blast 2s linear forwards 8s; /* Adjusted timing for longer animation */
+        }
+        @keyframes blast {
+            0% {
+                opacity: 0;
+                width: 200px;
+                height: 200px;
+            }
+            50% {
+                opacity: 1;
+                width: 400px;
+                height: 400px;
+            }
+            100% {
+                opacity: 0;
+                width: 800px;
+                height: 800px;
+            }
+        }
+        .blackout {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            opacity: 0;
+            animation: blackout 1s linear forwards 9s; /* Adjusted timing for longer animation */
+        }
+        @keyframes blackout {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .server-message {
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #FF0000; /* Red color */
+            opacity: 0;
+        }
+        .loading-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #FFFFFF; /* White color for loading text */
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <div class="navbar">
-            <div class="nav-logo">
-                <div class="logo">
-                    <B><i><u>C</B></u></i>
-                </div>
-            </div>
-<div class="nav-address ">
-    <p class="add-first"> Deliver to </p>
-    
-    <div class="add-icon">
-        <i class="fa-solid fa-location-dot" ></i>
-        <p class="add-second">Kv-KNN.GZB</p>
+    <div class="overlay"></div> <!-- Overlay to prevent interaction -->
+    <div class="container">
+        <div class="code" id="code">
+            // Simulating some code...
+            #include <iostream>
+            using namespace std;
+
+            int main() {
+                cout << "We've been hacked!" << endl;
+                for(int i = 0; i < 10; i++) {
+                    cout << "System breach detected!" << endl;
+                }
+                return 0;
+            }
+
+            // More random code lines
+            var x = 10;
+            var y = 20;
+            var z = x + y;
+            console.log(z);
+
+            // Infinite loop to simulate hack
+            while(true) {
+                cout << "Hacked!" << endl;
+            }
+
+            // Additional code to lengthen animation
+            function simulateHack() {
+                let attempts = 0;
+                while(attempts < 100) {
+                    console.log("Attempting to breach system...");
+                    attempts++;
+                }
+                console.log("System compromised!");
+            }
+
+            simulateHack();
+
+            // More code
+            function encryptData(data) {
+                let encryptedData = "";
+                for(let char of data) {
+                    encryptedData += String.fromCharCode(char.charCodeAt(0) + 1);
+                }
+                return encryptedData;
+            }
+
+            let sensitiveInfo = "password123";
+            let encryptedInfo = encryptData(sensitiveInfo);
+            console.log("Encrypted Info: " + encryptedInfo);
+
+            // Simulating some code...
+            #include <iostream>
+            using namespace std;
+
+            int main() {
+                cout << "We've been hacked!" << endl;
+                for(int i = 0; i < 10; i++) {
+                    cout << "System breach detected!" << endl;
+                }
+                return 0;
+            }
+
+            // More random code lines
+            var x = 10;
+            var y = 20;
+            var z = x + y;
+            console.log(z);
+
+            // Infinite loop to simulate hack
+            while(true) {
+                cout << "Hacked!" << endl;
+            }
+
+            // Additional code to lengthen animation
+            function simulateHack() {
+                let attempts = 0;
+                while(attempts < 100) {
+                    console.log("Attempting to breach system...");
+                    attempts++;
+                }
+                console.log("System compromised!");
+            }
+
+            simulateHack();
+
+            // More code
+            function encryptData(data) {
+                let encryptedData = "";
+                for(let char of data) {
+                    encryptedData += String.fromCharCode(char.charCodeAt(0) + 1);
+                }
+                return encryptedData;
+            }
+
+            let sensitiveInfo = "password123";
+            let encryptedInfo = encryptData(sensitiveInfo);
+            console.log("Encrypted Info: " + encryptedInfo);
+
+            / try*#login---Failed
+                          / try*#login---Failed 
+                          / try*#login---Failed 
+                          / try*#login---Failed
+                          / try*#login---Failed 
+        </div>
+        <div class="message">Completed</div>
+        <div class="blackout"></div>
+        <div class="server-message" id="server-message">🚷Enter At Your Own Risk 🔞 <br>
+          You are entring DARKWEB
+        </div>
+        <div class="loading-text" id="loading-text">Loading...</div>
+        <div class="redirect-button" id="redirect-button">
+            <button onclick="redirectToLink()">I Understand</button>
+        </div>
     </div>
-</div>
-          <div class="name ">
-            <center>
-            <b><i><u><p>CARDOMON POKEMON SHOP</p></u></i></b>
-        </center>
-          </div>
-           </div>
-           <div class="space">
-                Welcome-CARDOMON*
-             </div>
-             <br>
-             <div class="heromsg">
-                 <center>
-                     <i class="fa-solid fa-triangle-exclamation"></i><i class="fa-solid fa-triangle-exclamation"></i><i class="fa-solid fa-triangle-exclamation"></i>
-                 <p>There is no guarantee that card is "DAMAGEED" or not</p>
-                 <p>,Because we sent it in "proper" condition </p>
-                 <br>
-                 <a href="https://cardomo.github.io/cardomon.com/contactus.htm"><I><b>Contact us </b></I></a>
-             </center>
-             </div>
-             <br><br><br><br>
-        </div>
-          <div class="gx-cards">
-            <center>
-                <div class="name2">
-            <h2>V-STAR CARDS</h2>
-        </div>
-            <div class="shop_sction">
-                <br><br>
-                <div class="box1 box" >
-                    <a href="https://cardomo.github.io/cardomon.com/contactus.htm"><I><b>Contact us for picture</b></I></a>
-                </div>
-                <div class="deatils">
-                    <P>NAME OF CARD:-H.Decidueye</P>
-                    <P>CODE:-VM-6596</P>
-                    <P>PRICE:-₹20</P>
-                </div>
-                <br><br>
-                <div class="box2 box">
-                    <a href="https://cardomo.github.io/cardomon.com/contactus.htm"><I><b>Contact us for picture</b></I></a>
-                </div>
-                <div class="deatils">
-                    <P>NAME OF CARD:-Shyamin Vstar</P>
-                    <P>CODE:-VS-8328</P>
-                    <P>PRICE:-₹15</P>
-                    </div>
-                <br><br>
-                <div class="box3 box">
-                    <a href="https://cardomo.github.io/cardomon.com/contactus.htm"><I><b>Contact us for picture</b></I></a>
-                </div>
-                <div class="deatils">
-                    <P>NAME OF CARD:-Unown Vstar</P>
-                    <P>CODE:-VS-2806</P>
-                    <P>PRICE:-₹30</P>
-                    </div>
-        <br><br>
-                <div class="box4 box">
-                    <a href="https://cardomo.github.io/cardomon.com/contactus.htm"><I><b>Contact us for picture</b></I></a>
-                </div>
-                <div class="deatils">
-                    <P>NAME OF CARD:-H.Lilligant Vstar</P>
-                    <P>CODE:-VS-6487</P>
-                    <P>PRICE:-₹20</P>
-                    </div>
-        <br><br>
-                <div class="box5 box">
-                    <a href="https://cardomo.github.io/cardomon.com/contactus.htm"><I><b>Contact us for picture</b></I></a>
-                </div>
-                <div class="deatils">
-                    <P>NAME OF CARD:-Arceus Vstar</P>
-                    <P>CODE:-VS-8292</P>
-                    <P>PRICE:-₹35</P>
-                </div>
-                <br><br><br>
-            </div>
-        </center>
-          </div>
-        <DIV>
-<br>
-<center>
-<h2>Thanks for visiting our website Please try to buy something!</h2>
-</center>
-<h2><b>Special thanks to our suppoters:</b></h2>
-</center>
-<p>*Shreyansh</p>
-<p>*Priyank</p>
-    <p>*Moksh</p>
-<p>*priyanshu</p>
-<center>
-<h2><b>cards seller:</b></h2>
-</center>
-<p>*Devansh</p>
-<p>*Shreyansh</p>
-<p>*Priyanshu</p>
-<center>
-<h2><b>This website is made by</b></h2>
-<p>*Devansh singh</p>
-</center>
-<center>THANKS FOR YOUR SUPPORT</center>
-</DIV>
-</center>
-</div>
+
+    <script>
+        function redirectToLink() {
+            window.location.href = '  https://cardomon07.github.io/Wlol/goldern.htm'  }
+
+        setTimeout(() => {
+            document.getElementById('server-message').style.opacity = 1; // Corrected opacity value
+            document.querySelector('.overlay').style.display = 'none'; // Remove overlay after animation completes
+            document.getElementById('redirect-button').style.opacity = 1; // Show the button after blackout
+            document.getElementById('loading-text').style.display = 'none'; // Hide the loading text
+        }, 9000); // Adjusted timeout for longer animation duration
+    </script>
 </body>
 </html>
