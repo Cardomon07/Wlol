@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prank Page</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .final-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <center>
+  <h1>⚠️DarkWEB⚠️</h1>
+  </center>
+  <br>
+  <br>
+  <br>
+    <div class="final-container">
+      <h1> Attention Dear User</h1>
+        <h1>HI (user-9876543210)</h1>
+      <h3>Your security level is too low please have a advance security level</h3>
+      <h3>your account has been hacked by .      ...... .user-38944327106(VarshonDARK)</h3> 
+      <h3>Please protect your phone </h3>
+        <h3>your phone can be hack by this user</h3>
+        <br>
+  <br>
+  <br>
+      <h4>-Team DarkWEB</h4>
+    </div>
+</body>
+</html>
