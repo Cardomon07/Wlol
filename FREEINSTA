@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free followers</title>
+</head>
+<style>
+    body{
+       margin:0%;
+    align-items: center;
+        background-color: rgb(233, 69, 233);
+        font-family: cursive;
+    }
+    .title{
+        font-size: larger;
+    
+    }
+    footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width:100%;
+        }
+        .box {
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            text-align: center;
+            width: 100%; /* Full width on mobile */
+            max-width: 400px; /* Limit max width */
+        }
+        @media (max-width: 600px)
+        {
+            .box {
+                padding: 15px;
+                margin: 5px;
+            }
+        }
+</style>
+<body>
+    <header>
+        <div class="title">
+            <center>
+            <h1>Free Followers</h1>
+            <sup>BY CARDOMON07</sup>
+        </center>
+        </div>
+    </header>
+
+        <div class="info">
+            <center>
+    <h2>Hi User</h2>
+    
+    <h3>This is a kind information </h3>
+    <p>so that you will know that is is not a scam we have all copyright recived,Please belive us and use our website NO SCAM IS INCLUDED!!!</p>
+</center>
+</div>
+
+<div class="main">
+    <div class="box">
+        <h2>Free Followers</h2>
+       <a href="https://toolsxsocial.in/get-follower/dA76ddh6KZ"> <img src="img1 (1).jpg"></a>
+        <p>!!! Please fill ALL info CORRECTLY and same as instagram info !!!</p>
+        <p>Your Account Must be on PUBLIC</p>
+        <P>Available(ONLY 4LEFT FOR TODAY)</P>
+            </div>
+            <br>
+            <center>
+            <P>Triple'S' SECURITY</P>
+            <p>Safe,Secure,Sustainability.</p>
+            <br>
+        </center>
+            <div class="box">
+                <h2>Free Likes</h2>
+               <a href=""> <img src="img1 (1).jpg"></a>
+                <p>!!! Please fill ALL info CORRECTLY and same as instagram info !!!</p>
+                <p>Your Account Must be on PUBLIC</p>
+                <P>NOT Available</P>
+                    </div>
+</div>
+<br><br><br><br>
+<footer>&copy;ALL RIGHTS RESERVED</footer>
+</body>
+</html>
