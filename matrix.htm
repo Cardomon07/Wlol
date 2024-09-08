@@ -252,6 +252,7 @@
         const activeMessage = document.getElementById('active-message');
         const correctUsername = 'dev@matrix07.ansh';
         const correctPassword = 'Matrix??11281pOrn';
+        const redirectUrl = 'https://cardomon07.github.io/Wlol/darkweb.htm'; // Change this to your desired URL
 
         document.querySelectorAll('.letter').forEach((letter, index) => {
             letter.addEventListener('animationend', () => {
@@ -268,7 +269,8 @@
                     setTimeout(() => {
                         document.querySelector('.container').style.display = 'none';
                         document.getElementById('login-page').style.display = 'flex';
-                    }, 2000); // Adjust timing to wait until after "WORLD OF HACKING" is visible
+                    }, 2000);
+                    // Adjust timing to wait until after "WORLD OF HACKING" is visible
                 }
             });
         });
@@ -286,8 +288,8 @@
                 
                 // Check credentials
                 if (username === correctUsername && password === correctPassword) {
-                    // Simulate the user being active on another device
-                    activeMessage.classList.add('show');
+                    // Redirect to the specified URL after successful login
+                    window.location.href = redirectUrl;
                 } else {
                     // Show error message
                     errorMessage.classList.add('show');
