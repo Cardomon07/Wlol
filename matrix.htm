@@ -1,301 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Intro</title>
+    <title>Complaint & Feedback Form</title>
     <style>
+        /* General Body Styling with Moving Gradient */
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
-            overflow: hidden;
-            font-family: monospace;
-            background: #000;
-            color: #0f0;
-            text-align: center;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4, #ffdde1, #a18cd1, #fad0c4, #ff9a9e);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
         }
 
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Container Style */
         .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
         }
 
-        .intro-text {
-            font-size: 3rem; /* Adjusted for smaller screens */
-            font-weight: bold;
-            letter-spacing: 0.5rem; /* Adjusted for smaller screens */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .letter {
-            opacity: 0;
-            animation: appear 1s ease forwards;
-            display: inline-block;
-        }
-
-        @keyframes appear {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .letter:nth-child(1) { animation-delay: 0s; }
-        .letter:nth-child(2) { animation-delay: 0.5s; }
-        .letter:nth-child(3) { animation-delay: 1s; }
-        .letter:nth-child(4) { animation-delay: 1.5s; }
-        .letter:nth-child(5) { animation-delay: 2s; }
-        .letter:nth-child(6) { animation-delay: 2.5s; }
-
-        .line-container {
-            display: none; /* Initially hidden */
-            position: absolute;
-            bottom: 40px; /* Adjusted for smaller screens */
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-        }
-
-        .line {
-            width: 0;
-            height: 2px;
-            background: #0f0;
-            transition: width 1s ease;
-        }
-
-        .dot {
-            width: 6px; /* Smaller dots */
-            height: 6px; /* Smaller dots */
-            background: #0f0;
-            border-radius: 50%;
-            margin: 0 6px; /* Smaller margin */
-            opacity: 0; /* Initially hidden */
-            transition: opacity 1s ease;
-        }
-
-        .intro-text.complete .line {
-            width: 60%;
-        }
-
-        .line-container.show {
-            display: flex; /* Show container */
-        }
-
-        .line-container.show .dot {
-            opacity: 1; /* Show dots */
-        }
-
-        .world-of-hacking {
-            opacity: 0;
-            font-size: 1rem; /* Adjusted for smaller screens */
-            margin-top: 15px;
-            transition: opacity 1s ease;
-            text-transform: uppercase;
-        }
-
-        .intro-text.complete ~ .world-of-hacking {
-            opacity: 1;
-        }
-
-        .login-page {
-            display: none;
-            height: 100vh;
-            background: #000;
-            color: #0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .login-form {
-            border: 1px solid #0f0;
-            padding: 15px; /* Reduced padding */
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 8px; /* Slightly rounded corners */
-            width: 80%; /* Reduced width */
-            max-width: 300px; /* Smaller maximum width */
-        }
-
-        .login-form input {
-            display: block;
-            width: 100%;
-            margin: 8px 0; /* Reduced margin */
-            padding: 8px; /* Reduced padding */
-            border: 1px solid #0f0;
-            background: #000;
-            color: #0f0;
-            border-radius: 5px;
-            font-size: 0.9rem; /* Slightly smaller font size */
-        }
-
-        .login-form button {
-            padding: 8px; /* Reduced padding */
-            border: none;
-            background: #0f0;
-            color: #000;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 100%;
-            font-size: 0.9rem; /* Slightly smaller font size */
-        }
-
-        .login-form button:hover {
-            background: #0c0;
-        }
-
-        /* Loading Screen */
-        .loading-screen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            color: #0f0;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem; /* Adjusted for smaller screens */
+        /* Form Heading */
+        h2 {
             text-align: center;
-            flex-direction: column;
+            margin-bottom: 20px;
         }
 
-        .loading-message {
-            margin-top: 20px;
-        }
-
-        .error-message {
-            display: none;
-            color: #f00;
-            font-size: 1rem; /* Adjusted for smaller screens */
-            margin-top: 20px;
-        }
-
-        .error-message.show {
+        /* Label Styling */
+        label {
+            font-weight: bold;
             display: block;
+            margin-top: 10px;
         }
 
-        .active-message {
+        /* Input and Select Styling */
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Success Message Style */
+        .hidden {
             display: none;
-            color: #ff0;
-            font-size: 1rem; /* Adjusted for smaller screens */
+        }
+
+        #successMessage {
+            text-align: center;
             margin-top: 20px;
-        }
-
-        .active-message.show {
-            display: block;
-        }
-
-        @media (max-width: 600px) {
-            .intro-text {
-                font-size: 2.5rem; /* Smaller text for very small screens */
-                letter-spacing: 0.3rem; /* Adjusted for smaller screens */
-            }
-
-            .world-of-hacking {
-                font-size: 0.8rem; /* Adjusted for smaller screens */
-            }
-
-            .login-form {
-                width: 90%; /* Adjust form width for smaller screens */
-            }
-
-            .loading-message {
-                font-size: 1rem; /* Adjusted for smaller screens */
-            }
+            background-color: #dff0d8;
+            padding: 15px;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="intro-text" id="intro-text">
-            <span class="letter">M</span>
-            <span class="letter">A</span>
-            <span class="letter">T</span>
-            <span class="letter">R</span>
-            <span class="letter">I</span>
-            <span class="letter">X</span>
-        </div>
-        <div class="line-container" id="line-container">
-            <div class="dot"></div>
-            <div class="line"></div>
-            <div class="dot"></div>
-        </div>
-        <div class="world-of-hacking" id="world-of-hacking">WORLD OF HACKING</div>
-    </div>
+        <form id="complaintForm">
+            <h2>Login to File a Complaint</h2>
+            
+            <!-- Name Field -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-    <div class="login-page" id="login-page">
-        <div class="login-form">
-            <input type="text" id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
-            <button id="login-button">Login</button>
-            <div class="error-message" id="error-message">REQUEST BLOCKED</div>
-            <div class="active-message" id="active-message">User is already ACTIVE on another device</div>
-        </div>
-    </div>
+            <!-- Address Field -->
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
 
-    <div class="loading-screen" id="loading-screen">
-        <div class="loading-message">Loading...</div>
+            <!-- Complaint Type Selection -->
+            <label for="complaintType">Select Complaint Type:</label>
+            <select id="complaintType" name="complaintType" required>
+                <option value="">-- Select --</option>
+                <option value="cyber">Cyber</option>
+                <option value="local">Local</option>
+                <option value="ipp">IPP</option>
+            </select>
+
+            <!-- Feedback Section -->
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" placeholder="Provide your feedback or complaint details" required></textarea>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden">
+            <h3>Thank You!</h3>
+            <p>Your complaint has been successfully submitted.</p>
+        </div>
     </div>
 
     <script>
-        const introText = document.getElementById('intro-text');
-        const lineContainer = document.getElementById('line-container');
-        const worldOfHacking = document.getElementById('world-of-hacking');
-        const loginButton = document.getElementById('login-button');
-        const loadingScreen = document.getElementById('loading-screen');
-        const errorMessage = document.getElementById('error-message');
-        const activeMessage = document.getElementById('active-message');
-        const correctUsername = 'dev@matrix07.ansh';
-        const correctPassword = 'Matrix??11281pOrn';
-        const redirectUrl = 'https://cardomon07.github.io/Wlol/darkweb.htm'; // Change this to your desired URL
+        // Form Submission Handling
+        document.getElementById("complaintForm").addEventListener("submit", function(event) {
+            event.preventDefault();
 
-        document.querySelectorAll('.letter').forEach((letter, index) => {
-            letter.addEventListener('animationend', () => {
-                if (index === document.querySelectorAll('.letter').length - 1) {
-                    introText.classList.add('complete');
-                    setTimeout(() => {
-                        lineContainer.classList.add('show');
-                        lineContainer.style.transition = 'opacity 1s ease';
-                        setTimeout(() => {
-                            worldOfHacking.style.opacity = '1';
-                            worldOfHacking.style.transition = 'opacity 1s ease';
-                        }, 500);
-                    }, 500); // Delay to allow the line and dots to appear
-                    setTimeout(() => {
-                        document.querySelector('.container').style.display = 'none';
-                        document.getElementById('login-page').style.display = 'flex';
-                    }, 2000);
-                    // Adjust timing to wait until after "WORLD OF HACKING" is visible
-                }
-            });
-        });
+            // Get Form Values
+            var name = document.getElementById("name").value;
+            var address = document.getElementById("address").value;
+            var complaintType = document.getElementById("complaintType").value;
+            var feedback = document.getElementById("feedback").value;
 
-        loginButton.addEventListener('click', () => {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            // Validate if all fields are filled
+            if (name === "" || address === "" || complaintType === "" || feedback === "") {
+                alert("Please fill all the fields before submitting.");
+                return;
+            }
 
-            // Show loading screen
-            loadingScreen.style.display = 'flex';
-
-            // Simulate a delay for loading
-            setTimeout(() => {
-                loadingScreen.style.display = 'none'; // Hide loading screen
-                
-                // Check credentials
-                if (username === correctUsername && password === correctPassword) {
-                    // Redirect to the specified URL after successful login
-                    window.location.href = redirectUrl;
-                } else {
-                    // Show error message
-                    errorMessage.classList.add('show');
-                }
-            }, 2000); // Adjust the delay as needed
+            // Show Success Message after Submission
+            document.getElementById("complaintForm").style.display = "none";
+            document.getElementById("successMessage").classList.remove("hidden");
         });
     </script>
+
 </body>
 </html>
